@@ -41,4 +41,4 @@ window.initializeFirebase = initializeFirebase;
 // 2. DRIVE_UPLOAD_URL: your deployed Google Apps Script web-app URL
 //    (step-by-step in DRIVE_SETUP.md — takes ~5 minutes, browser only)
 window.IMGBB_API_KEY   = '768e1ce163b9328959c465eb8932866a';
-window.DRIVE_UPLOAD_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+window.DRIVE_UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbxOpm6a8FM65AVpPunvcqvawkYA8VpHiFGTjMuXqLMaSCeOdqInhKdkTBnQCaaTYWu0/exec';
