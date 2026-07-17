@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>MujConnects</title>
+  <meta name="description" content="MUJ Campus Connect — Chat, Resources, Events & More" />
+  <meta name="theme-color" content="#f97316" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4yMcM0WjM_iFHhIv7NEbRriyySOii4CdZ25fHoXOrpG064aDWfUiMkE6kPQqeVelmmt5S3ZVo0O5V0fc1ZX2hBpP-eo5yJiSeLtyvIKISdEm_r4eCSBcr2pEqLHhyphenhyphen3bCV71p2prpc1PfobKoBKnzoVOauvZzZa-2_yIehVYIfAFrA7-uNbJoAEjfC6Gti/s1080/photo_6289670243252636530_y.jpg" />
+  <link rel="icon" type="image/jpeg" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4yMcM0WjM_iFHhIv7NEbRriyySOii4CdZ25fHoXOrpG064aDWfUiMkE6kPQqeVelmmt5S3ZVo0O5V0fc1ZX2hBpP-eo5yJiSeLtyvIKISdEm_r4eCSBcr2pEqLHhyphenhyphen3bCV71p2prpc1PfobKoBKnzoVOauvZzZa-2_yIehVYIfAFrA7-uNbJoAEjfC6Gti/s1080/photo_6289670243252636530_y.jpg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</head>
+<body class="transition-colors pb-24 sm:pb-0">
+
+  <!-- Top header (desktop) -->
+  <header class="sticky top-0 z-10 pt-3 px-3">
+    <div class="glass max-w-5xl mx-auto flex items-center justify-between h-14 px-4 rounded-2xl">
+      <a href="#home" class="flex items-center gap-2.5">
+        <span class="avatar-ring">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4yMcM0WjM_iFHhIv7NEbRriyySOii4CdZ25fHoXOrpG064aDWfUiMkE6kPQqeVelmmt5S3ZVo0O5V0fc1ZX2hBpP-eo5yJiSeLtyvIKISdEm_r4eCSBcr2pEqLHhyphenhyphen3bCV71p2prpc1PfobKoBKnzoVOauvZzZa-2_yIehVYIfAFrA7-uNbJoAEjfC6Gti/s1080/photo_6289670243252636530_y.jpg" alt="logo" class="h-7 w-7 rounded-full object-cover" />
+        </span>
+        <h1 class="nova-brand font-extrabold text-lg tracking-tight">MujConnects</h1>
+      </a>
+      <nav class="hidden sm:flex items-center gap-1 text-sm" id="navbar"></nav>
+      <button id="menuBtn" class="sm:hidden btn-ghost rounded-full w-9 h-9 flex items-center justify-center text-lg">☰</button>
+    </div>
+    <div id="mobileNav" class="hidden sm:hidden glass max-w-5xl mx-auto mt-2 px-4 py-3 flex flex-col gap-1 text-sm rounded-2xl"></div>
+  </header>
+
+  <main id="app" class="max-w-5xl mx-auto px-3 sm:px-4 py-5"></main>
+
+  <footer class="hidden sm:block py-8 text-center text-xs mt-8" style="color:var(--muted)">
+    © <span id="year"></span> <span class="nova-brand font-semibold">MujConnects</span> · Made by Nazish Qarnain
+  </footer>
+
+  <!-- Mobile Bottom Navbar -->
+  <nav id="bottomNav" class="sm:hidden fixed bottom-0 left-0 right-0 z-20 hidden" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="flex items-center justify-around h-16 px-2">
+      <a href="#home" class="bnav-item flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl" data-page="home">
+        <span class="text-xl">🏠</span><span class="text-[10px]">Home</span>
+      </a>
+      <a href="#chat" class="bnav-item flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl" data-page="chat">
+        <span class="text-xl">💬</span><span class="text-[10px]">Chat</span>
+      </a>
+      <a href="#resources" class="bnav-item flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl" data-page="resources">
+        <span class="text-xl">📚</span><span class="text-[10px]">Resources</span>
+      </a>
+      <a href="#dm" class="bnav-item flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl" data-page="dm">
+        <span class="text-xl">📩</span><span class="text-[10px]">Messages</span>
+      </a>
+      <a href="#more" class="bnav-item flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl" data-page="more" id="moreBtn">
+        <span class="text-xl">⋯</span><span class="text-[10px]">More</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- "More" bottom sheet -->
+  <div id="moreSheet" class="fixed inset-0 z-30 hidden">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeMoreSheet()"></div>
+    <div class="glass-solid absolute bottom-0 left-0 right-0 rounded-t-3xl p-4 pb-8 pop-in" style="padding-bottom: calc(env(safe-area-inset-bottom) + 1.5rem);">
+      <div class="w-10 h-1.5 rounded-full mx-auto mb-4" style="background:var(--border)"></div>
+      <div class="grid grid-cols-4 gap-3" id="moreGrid"></div>
+    </div>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script src="utils.js"></script>
+  <script src="auth.js"></script>
+  <script src="home.js"></script>
+  <script src="chat.js"></script>
+  <script src="resources.js"></script>
+  <script src="lostandfound.js"></script>
+  <script src="extras.js"></script>
+  <script src="campusmap.js"></script>
+  <script src="academic.js"></script>
+  <script src="social.js"></script>
+  <script src="dm.js"></script>
+  <script src="profile.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

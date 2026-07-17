@@ -1,0 +1,13 @@
+{
+  "name": "mujconnects",
+  "version": "1.0.0",
+  "description": "MujConnects — MUJ campus community app (frontend, Firebase-backed)",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./nova.css -o ./style.css --minify",
+    "watch:css": "tailwindcss -i ./nova.css -o ./style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

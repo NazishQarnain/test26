@@ -1,0 +1,25 @@
+{
+  "name": "MujConnects",
+  "short_name": "MujConnects",
+  "description": "MUJ Campus Connect App \u2014 Chat, Resources, Events & More",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fdf5f1",
+  "theme_color": "#f97316",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4yMcM0WjM_iFHhIv7NEbRriyySOii4CdZ25fHoXOrpG064aDWfUiMkE6kPQqeVelmmt5S3ZVo0O5V0fc1ZX2hBpP-eo5yJiSeLtyvIKISdEm_r4eCSBcr2pEqLHhyphenhyphen3bCV71p2prpc1PfobKoBKnzoVOauvZzZa-2_yIehVYIfAFrA7-uNbJoAEjfC6Gti/s1080/photo_6289670243252636530_y.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4yMcM0WjM_iFHhIv7NEbRriyySOii4CdZ25fHoXOrpG064aDWfUiMkE6kPQqeVelmmt5S3ZVo0O5V0fc1ZX2hBpP-eo5yJiSeLtyvIKISdEm_r4eCSBcr2pEqLHhyphenhyphen3bCV71p2prpc1PfobKoBKnzoVOauvZzZa-2_yIehVYIfAFrA7-uNbJoAEjfC6Gti/s1080/photo_6289670243252636530_y.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
